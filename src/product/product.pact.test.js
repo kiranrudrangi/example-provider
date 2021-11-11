@@ -76,7 +76,7 @@ describe("Pact Verification", () => {
     return new Verifier(opts).verifyProvider()
       .then(output => {
         console.log("Pact Verification Complete!")
-        console.log(output)
+        console.log("Here is the result obj : "+output)
       })
       .finally(() => {
         server.close();
