@@ -37,25 +37,24 @@ describe("Pact Verification", () => {
       includeWipPactsSince: undefined
     }
 
-    const stateHandlers = {
-      "products exists": () => {
-        controller.repository.products = new Map([
-          ["10", new Product("10", "CREDIT_CARD", "28 Degrees", "v1")]
-        ]);
-      },
+    stateHandlers = {
       "products exist": () => {
         controller.repository.products = new Map([
+          ["09", new Product("09", "CREDIT_CARD", "Gem Visa", "v1")],
           ["10", new Product("10", "CREDIT_CARD", "28 Degrees", "v1")]
         ]);
       },
-      "a product with ID 10 exists": () => {
+      "no products exist": () => {
+        controller.repository.products = new Map();
+      },
+      "product with ID 10 exists": () => {
         controller.repository.products = new Map([
           ["10", new Product("10", "CREDIT_CARD", "28 Degrees", "v1")]
         ]);
       },
-      "a product with ID 11 does not exist": () => {
+      "product with ID 11 does not exist": () => {
         controller.repository.products = new Map();
-      }
+      },
     }
 
     const requestFilter = (req, res, next) => {
